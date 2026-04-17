@@ -6,7 +6,7 @@ from langchain_experimental.sql import SQLDatabaseChain
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 # carregar credenciais
-load_dotenv()
+load_dotenv(dotenv_path="../.env")
 api_key = os.getenv("GOOGLE_API_KEY")
 
 # conectar ao banco de dados SQLite (Seu lado DBA)
