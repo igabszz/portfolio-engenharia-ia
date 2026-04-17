@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
 
-# 1. Configuração de ambiente (Busca na raiz)
+# configuração de ambiente
 load_dotenv(dotenv_path="../.env")
 api_key = os.getenv("GOOGLE_API_KEY")
 
-# 2. Inicialização do Modelo
+# inicialização do Modelo
 llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", google_api_key=api_key)
 
 def codificar_imagem(caminho_imagem):
@@ -21,13 +21,13 @@ def processar_ocr_inteligente(arquivo):
         print(f"❌ Arquivo {arquivo} não encontrado.")
         return
 
-    # 3. Preparando os dados da imagem
+    # preparando os dados da imagem
     base64_image = codificar_imagem(arquivo)
 
-    # 4. Prompt IDP (Foco na vaga da Kktech) [cite: 13]
+    # prompt IDP
     prompt = "Extraia os dados desta ficha cadastral para um JSON estruturado com os campos: nome, data, documento e resumo."
 
-    # 5. Mensagem Multimodal Formatada corretamente
+    # mensagem Multimodal Formatada corretamente
     mensagem = HumanMessage(
         content=[
             {"type": "text", "text": prompt},
